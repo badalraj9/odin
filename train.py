@@ -311,7 +311,7 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Train ODIN model')
-    parser.add_argument('--config', choices=['tiny', 'small', 'medium', 'large'], 
+    parser.add_argument('--config', choices=['tiny', 'mini', 'small', 'production', 'medium', 'large'], 
                        default='tiny', help='Model size')
     parser.add_argument('--data', type=str, default='data/scenarios',
                        help='Path to scenario data')
@@ -329,7 +329,9 @@ def main():
     # Create config
     config_map = {
         'tiny': ODINConfig.tiny,
+        'mini': ODINConfig.mini,
         'small': ODINConfig.small,
+        'production': ODINConfig.production,
         'medium': ODINConfig.medium,
         'large': ODINConfig.large,
     }

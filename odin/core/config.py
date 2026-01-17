@@ -113,7 +113,7 @@ class ODINConfig:
     
     @classmethod
     def tiny(cls) -> 'ODINConfig':
-        """~1M params, trains in 10-15 mins on Colab T4."""
+        """~1.7M params, trains in 10-15 mins on Colab T4."""
         return cls(
             state_dim=256,
             timescales=[64, 64, 64, 64],
@@ -123,6 +123,20 @@ class ODINConfig:
             hidden_dim=64,
             batch_size=64,
             max_epochs=20,
+        )
+    
+    @classmethod
+    def mini(cls) -> 'ODINConfig':
+        """~5M params, trains in 25-35 mins on Colab T4."""
+        return cls(
+            state_dim=384,
+            timescales=[96, 96, 96, 96],
+            timescale_taus=[2.0, 12.0, 75.0, 350.0],
+            rank=12,
+            num_layers=5,
+            hidden_dim=96,
+            batch_size=48,
+            max_epochs=25,
         )
     
     @classmethod

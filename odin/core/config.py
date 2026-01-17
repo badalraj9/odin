@@ -171,15 +171,15 @@ class ODINConfig:
     def production(cls) -> 'ODINConfig':
         """~30M params - the SWEET SPOT. 2 hours on Colab T4, runs on RTX 3050."""
         return cls(
-            state_dim=512,
-            timescales=[128, 128, 128, 128],
+            state_dim=768,                              # Larger state
+            timescales=[192, 192, 192, 192],
             timescale_taus=[2.0, 15.0, 100.0, 500.0],
-            rank=24,
-            num_layers=8,
-            hidden_dim=160,
-            batch_size=32,
+            rank=32,                                    # Higher rank
+            num_layers=12,                              # More layers
+            hidden_dim=256,                             # Larger hidden
+            batch_size=24,                              # Smaller batch for memory
             max_epochs=35,
-            learning_rate=5e-5,  # Lower LR for larger model
+            learning_rate=3e-5,                         # Lower LR for larger model
         )
     
     @classmethod

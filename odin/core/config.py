@@ -155,14 +155,14 @@ class ODINConfig:
     
     @classmethod
     def small_10m(cls) -> 'ODINConfig':
-        """~9M params - matches the checkpoint from 2026-01-17 training."""
+        """~9M params - EXACT match for 2026-01-17 checkpoint."""
         return cls(
-            state_dim=640,
-            timescales=[160, 160, 160, 160],
+            state_dim=512,
+            timescales=[128, 128, 128, 128],
             timescale_taus=[2.0, 15.0, 100.0, 500.0],
             rank=24,
             num_layers=8,
-            hidden_dim=192,
+            hidden_dim=160,
             batch_size=32,
             max_epochs=35,
             learning_rate=5e-5,
